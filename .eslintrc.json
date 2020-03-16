@@ -2,7 +2,8 @@
     "env": {
         "browser": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "jest/globals": true
     },
     "extends": [
         "plugin:react/recommended",
@@ -22,12 +23,33 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "simple-import-sort",
+        "jest"
     ],
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
         "import/extensions": [1, "never"],
-        "jsx-a11y/anchor-is-valid": ["off"]
+        "jsx-a11y/anchor-is-valid": ["off"],
+        "simple-import-sort/sort": [
+            "error",
+            {
+                "groups": [
+                    ["react-app-polyfill(/.*|$)", "canvas-toBlob"],
+                    ["^react", "^@?\\w"], // 3rd party packages. "react" related packages come first
+                    [
+                        "^(components|config|constants|context|hooks|services|store|types|utils)(/.*|$)"
+                    ], // Internal packages
+                    ["^(__mocks__)(/.*|$)"], // Mocks
+                    ["^\\u0000"], // Side effect imports as "import "./setup""
+                    ["^\\.\\.(?!/?$)", "^\\.\\./?$"], // Parent imports. Put ".." last
+                    ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"], // Other relative imports. Put same-folder imports and "." last
+                    ["^.+\\.s?css$"] // Style imports
+                ]
+            }
+        ],
+        "sort-imports": "off",
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.ts", "**/*.test.tsx"]}]
     },
     "settings": {
         "import/resolver": {

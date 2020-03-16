@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter renders 1`] = `
+<div>
+  <div>
+    <input
+      name="search"
+      type="input"
+    />
+  </div>
+</div>
+`;
