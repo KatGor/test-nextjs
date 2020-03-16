@@ -18,8 +18,7 @@
             "jsx": true
         },
         "ecmaVersion": 2018,
-        "sourceType": "module",
-        "project": "./tsconfig.json"
+        "sourceType": "module"
     },
     "plugins": [
         "react",
@@ -33,7 +32,8 @@
     "settings": {
         "import/resolver": {
             "node": {
-                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+                "extensions": [".js", ".jsx", ".ts", ".tsx"],
+                "paths": ["src/"]
             }
         }
     }

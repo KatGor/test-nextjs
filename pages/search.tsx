@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Filter from '../src/components/Filter';
+import Filter from 'components/Filter';
 
 const Search = () => (
   <div className="container">
